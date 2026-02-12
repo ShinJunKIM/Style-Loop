@@ -1,0 +1,32 @@
+# Style-Loop 기술 설계서 (Design Doc)
+
+**작성자:** 김신준
+**날짜:** 2026-02-12
+**상태:** Draft (초안)
+
+## 1. 개요 (Overview)
+**1.1. 프로젝트 요약**
+사용자가 소유한 옷(상의/하의)의 사진을 업로드하면, AI가 이를 분석하여 가장 잘 어울리는 조합(하의/신발 등)을 추천해 주는 서비스. 내 옷장에 없는 아이템일 경우 구매 링크까지 제공한다.
+
+**1.2. 개발 목표 (Goals)**
+* **고성능:** C++ 기반의 자체 벡터 검색 엔진을 구현하여 0.1초 이내의 추천 속도 달성.
+* **정확성:** OpenAI CLIP 모델을 활용하여 시각적 유사도뿐만 아니라 '스타일적 맥락'까지 이해.
+* **풀 사이클:** 기획부터 배포(Deployment)까지 1인 개발 전 과정을 경험.
+
+## 2. 핵심 기능 요구사항 (Key Features)
+* **User:**
+    * 로그인 없이 메인 화면에서 바로 사진 업로드 가능.
+    * 추천 결과는 "Best Match", "Unique Style", "Trend" 3가지 옵션으로 제공.
+* **System:**
+    * 이미지 업로드 시 즉시 512차원 벡터로 변환 (Python).
+    * 10,000개 이상의 패션 아이템 데이터베이스에서 최단 거리 검색 (C++).
+
+## 3. 기술 스택 (Tech Stack)
+* **Frontend:** React (Web)
+* **AI Backend:** Python FastAPI, PyTorch, CLIP Model
+* **Search Engine:** C++ 17 (Custom Vector Search Server)
+* **Database:** MySQL
+* **DevOps:** Docker, AWS EC2, GitHub Actions
+
+## 4. 아키텍처 (Architecture)
+[Client] -> [Python AI Server] <-> [C++ Search Engine]
