@@ -1,0 +1,8 @@
+[
+{
+  "directory": "C:/Users/김신준/Desktop/Style-Loop/build",
+  "command": "C:\\msys64\\mingw64\\bin\\g++.exe   -g -std=gnu++17 -o CMakeFiles\\StyleLoopEngine.dir\\src\\main.cpp.obj -c C:\\Users\\김신준\\Desktop\\Style-Loop\\src\\main.cpp",
+  "file": "C:/Users/김신준/Desktop/Style-Loop/src/main.cpp",
+  "output": "CMakeFiles/StyleLoopEngine.dir/src/main.cpp.obj"
+}
+]
